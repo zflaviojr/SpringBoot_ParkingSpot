@@ -1,7 +1,9 @@
 package edu.ufcg.br.parkingspot.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -15,6 +17,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class ParkingSpotSecutiry {
+	
+	@Autowired
+	UserDetailsServiceImpl userDetailsServiceImpl;
 	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -35,16 +40,26 @@ public class ParkingSpotSecutiry {
 		return http.build();
 	}
 
+	/*
 	@Bean
 	public UserDetailsService userDetailsService() {
-		UserDetails user =
-			 User.withUsername("zflavio")
-				.password(passwordEncoder().encode("123321"))
-				.roles("ADMIN")
-				.build();
-
-		return new InMemoryUserDetailsManager(user);
-	}	
+		/* in memory
+//		UserDetails user =
+//			 User.withUsername("zflavio")
+//				.password(passwordEncoder().encode("123321"))
+//				.roles("ADMIN")
+//				.build();
+//
+//		return new InMemoryUserDetailsManager(user);
+		return userDetailsServiceImpl;
+	}
+	*/
+	
+	private void configure(AuthenticationManagerBuilder auth) throws Exception {
+		// TODO Auto-generated method stub
+		auth.userDetailsService(userDetailsServiceImpl)
+		.passwordEncoder(passwordEncoder());
+	}
 		
 	@Bean
 	public PasswordEncoder passwordEncoder() {

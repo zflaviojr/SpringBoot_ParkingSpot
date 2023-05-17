@@ -40,7 +40,7 @@ public class ParkingSpotService {
 	}
 
 	public void delete(ParkingSpot parkingSpot) {
-		parkingSpotRepository.delete(parkingSpot);		
+		parkingSpotRepository.delete(parkingSpot);
 	}
 	
 }

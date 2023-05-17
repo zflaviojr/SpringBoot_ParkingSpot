@@ -6,8 +6,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.ufcg.br.parkingspot.controller.ParkingSpotController;
-
 @SpringBootApplication
 @RestController
 public class ParkingSpotApplication {
@@ -16,7 +14,7 @@ public class ParkingSpotApplication {
 		SpringApplication.run(ParkingSpotApplication.class, args);
 		
 		String senha = new BCryptPasswordEncoder().encode("senha123");
-		System.out.println(senha);
+		System.out.println("Senha123: " + senha);
 	}
 	
 	@GetMapping("/")
