@@ -1,10 +1,10 @@
-package edu.ufcg.comprov.resultsvestibular;
+package edu.ufcg.br.parkingspot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ResultsVestibularApplicationTests {
+class ParkingSpotApplicationTests {
 
 	@Test
 	void contextLoads() {
